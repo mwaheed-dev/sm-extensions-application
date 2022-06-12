@@ -1,0 +1,31 @@
+application {
+  config {
+    baseName SimpleRishta,
+    applicationType microservice,
+    packageName com.simplerishta.cms,
+    authenticationType jwt,
+    prodDatabaseType postgresql,    
+     buildTool maven
+  }
+  entities *
+}
+entity AuditTrail{
+trackingId String maxlength(12) required
+userId String maxlength(12) required
+userIp String maxlength(12) required
+countryCode String maxlength(3) required
+actionType String maxlength(12) required
+actionDetail String maxlength(500)
+failedReason String
+actionTimeStamp Instant required
+status Boolean required
+createdBy String maxlength(30)
+createdTimeStamp Instant required
+}
+
+
+service * with serviceClass
+dto all with mapstruct
+
+paginate AuditTrail with pagination
+    
