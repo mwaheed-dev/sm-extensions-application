@@ -1,6 +1,6 @@
 package com.simplerishta.cms;
 
-import com.simplerishta.cms.SmextensionsApp;
+import com.simplerishta.cms.SimpleRishtaApp;
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -12,6 +12,6 @@ import org.springframework.boot.test.context.SpringBootTest;
  */
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
-@SpringBootTest(classes = SmextensionsApp.class)
+@SpringBootTest(classes = SimpleRishtaApp.class)
 public @interface IntegrationTest {
 }

@@ -13,13 +13,26 @@
 # http://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 # ===================================================================
 
+eureka:
+  client:
+    enabled: false
+  instance:
+    appname: SimpleRishta
+    instanceId: SimpleRishta:${spring.application.instance-id:${random.value}}
+
 spring:
+  profiles:
+    # Uncomment the following line to enable tests against production database type rather than H2, using Testcontainers
+    #active: testcontainers
   application:
-    name: smextensions
+    name: SimpleRishta
+  cloud:
+    config:
+      enabled: false
 
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:h2:mem:smextensions;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    url: jdbc:h2:mem:simplerishta;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
     name:
     username:
     password:
@@ -58,13 +71,13 @@ spring:
     basename: i18n/messages
   task:
     execution:
-      thread-name-prefix: smextensions-task-
+      thread-name-prefix: simple-rishta-task-
       pool:
         core-size: 1
         max-size: 50
         queue-capacity: 10000
     scheduling:
-      thread-name-prefix: smextensions-scheduling-
+      thread-name-prefix: simple-rishta-scheduling-
       pool:
         size: 20
   thymeleaf:
@@ -81,7 +94,7 @@ server:
 # ===================================================================
 jhipster:
   clientApp:
-    name: 'smextensionsApp'
+    name: 'simpleRishtaApp'
   logging:
     # To test json console appender
     use-json-format: false
